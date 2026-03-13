@@ -27,6 +27,7 @@
       "name": "windows-msvc-debug",
       "displayName": "MSVC Debug",
       "inherits": "vcpkg-base",
+      "generator": "Visual Studio 17 2022",
       "condition": {
         "type": "equals",
         "lhs": "${hostSystemName}",
@@ -46,6 +47,7 @@
       "name": "windows-msvc-release",
       "displayName": "MSVC Release",
       "inherits": "vcpkg-base",
+      "generator": "Visual Studio 17 2022",
       "condition": {
         "type": "equals",
         "lhs": "${hostSystemName}",
@@ -73,7 +75,9 @@
       },
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
-        "VCPKG_TARGET_TRIPLET": "x64-mingw-dynamic"
+        "VCPKG_TARGET_TRIPLET": "x64-mingw-dynamic",
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++"
       },
       "vendor": {
         "jetbrains.com/clion": {
