@@ -1,0 +1,8 @@
+/build*/
+/out
+
+/.idea
+/.vs
+/.cache
+/.vscode
+/CMakeUserPresets.json
