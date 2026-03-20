@@ -4,6 +4,10 @@
 #include <CLI/CLI.hpp>
 
 int main() {
-    fmt::println("Greeter: {}", myProject::core::Greeter::greet("user"));
+    if (true) {
+        fmt::println("Greeter: {}", myProject::core::Greeter::greet("user"));
+    } else {
+        return 1;
+    }
     return 0;
 }
