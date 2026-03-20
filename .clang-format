@@ -12,12 +12,6 @@ IndentWidth: 4
 NamespaceIndentation: All
 BreakBeforeBinaryOperators: All
 BreakBeforeTernaryOperators: true
-SpacesInParens: Custom
-SpacesInParensOptions:
-  ExceptDoubleParentheses: true
-  InConditionalStatements: false
-  InEmptyParentheses: false
-  Other: false
 AlignArrayOfStructures: Left
 SpacesInContainerLiterals: true
 Cpp11BracedListStyle: false
