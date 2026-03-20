@@ -3,8 +3,8 @@
 
 #include <prj/core/greeter.h>
 
-int main(const int argc, char **argv) {
-    CLI::App app {"Greeter CLI App"};
+int main(const int argc, char** argv) {
+    CLI::App app{ "Greeter CLI App" };
     argv = app.ensure_utf8(argv);
 
     std::string name = "user";
