@@ -12,4 +12,4 @@ namespace myProject::core {
         return ss.str();
     }
 
-}
+}  // namespace myProject::core

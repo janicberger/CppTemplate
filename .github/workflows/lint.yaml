@@ -1,0 +1,83 @@
+name: Lint
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    env:
+      VCPKG_ROOT: ${{ github.workspace }}/../vcpkg
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # -------------------------
+      # Cache vcpkg
+      # -------------------------
+
+      - name: Cache vcpkg
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ env.VCPKG_ROOT }}
+            ~/.cache/vcpkg
+            build/vcpkg_installed
+          key: vcpkg-${{ runner.os }}-${{ hashFiles('vcpkg.json') }}
+          restore-keys: |
+            vcpkg-${{ runner.os }}-
+
+      # -------------------------
+      # Install vcpkg (if needed)
+      # -------------------------
+
+      - name: Bootstrap vcpkg
+        run: |
+          if [ ! -d "$VCPKG_ROOT" ]; then
+            git clone https://github.com/microsoft/vcpkg $VCPKG_ROOT
+          fi
+          $VCPKG_ROOT/bootstrap-vcpkg.sh
+
+      # -------------------------
+      # Install system tools
+      # -------------------------
+
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            clang-format clang-tidy cmake ninja-build python3-pip
+          pip3 install cmake-format
+
+      # -------------------------
+      # Configure (uses vcpkg)
+      # -------------------------
+
+      - name: Configure
+        run: |
+          cmake -B build \
+            -G Ninja \
+            -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake \
+            -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+      # -------------------------
+      # Lint steps
+      # -------------------------
+
+      - name: clang-format
+        run: |
+          FILES=$(git ls-files '*.cpp' '*.hpp' '*.h')
+          [ -z "$FILES" ] || clang-format --dry-run --Werror $FILES
+
+      - name: cmake-format
+        run: |
+          FILES=$(git ls-files 'CMakeLists.txt' '*.cmake')
+          [ -z "$FILES" ] || cmake-format --check $FILES
+
+      - name: clang-tidy
+        run: |
+          FILES=$(git ls-files '*.cpp')
+          [ -z "$FILES" ] || clang-tidy $FILES -p build --warnings-as-errors=*

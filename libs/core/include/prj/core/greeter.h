@@ -6,4 +6,4 @@ namespace myProject::core {
     public:
         static std::string greet(const std::string& name);
     };
-}
+}  // namespace myProject::core
