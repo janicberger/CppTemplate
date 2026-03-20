@@ -1,5 +1,5 @@
 enable_testing()
 
-find_package(GTEST CONFIG REQUIRED)
+find_package(GTest CONFIG REQUIRED)
 
 add_subdirectory(core)
