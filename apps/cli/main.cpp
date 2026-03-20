@@ -1,10 +1,10 @@
 #include <fmt/format.h>
-#include <CLI/CLI.hpp>
-
 #include <prj/core/greeter.h>
 
+#include <CLI/CLI.hpp>
+
 int main(const int argc, char** argv) {
-    CLI::App app{ "Greeter CLI App" };
+    CLI::App app{"Greeter CLI App"};
     argv = app.ensure_utf8(argv);
 
     std::string name = "user";
