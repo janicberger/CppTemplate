@@ -1,15 +1,15 @@
 ---
   BasedOnStyle: Google
-  AccessModifierOffset: '-4'
-  AlignTrailingComments: 'true'
-  AllowAllParametersOfDeclarationOnNextLine: 'false'
+  AccessModifierOffset: -4
+  AlignTrailingComments: true
+  AllowAllParametersOfDeclarationOnNextLine: false
   AlwaysBreakTemplateDeclarations: 'No'
   BreakBeforeBraces: Attach
-  ConstructorInitializerAllOnOneLineOrOnePerLine: 'true'
+  ConstructorInitializerAllOnOneLineOrOnePerLine: true
   IncludeBlocks: Regroup
   IndentPPDirectives: AfterHash
-  IndentWidth: '4'
+  IndentWidth: 4
   NamespaceIndentation: All
   BreakBeforeBinaryOperators: All
-  BreakBeforeTernaryOperators: 'true'
+  BreakBeforeTernaryOperators: true
 ...

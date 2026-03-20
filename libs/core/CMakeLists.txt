@@ -9,7 +9,7 @@ target_include_directories(core PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_
 
 # Find dependencies
 
-# Link depedencies
+# Link dependencies
 target_link_libraries(core
                       PUBLIC
                       PRIVATE
