@@ -1,12 +1,19 @@
 {
-  "name" : "cpptemplatetest",
-  "version-string" : "1.0.0",
-  "builtin-baseline" : "544a4c5c297e60e4ac4a5a1810df66748d908869",
-  "dependencies" : [ {
-    "name" : "fmt",
-    "version>=" : "12.1.0"
-  }, {
-    "name" : "gtest",
-    "version>=" : "1.17.0#2"
-  } ]
+  "name": "cpptemplatetest",
+  "version-string": "1.0.0",
+  "builtin-baseline": "544a4c5c297e60e4ac4a5a1810df66748d908869",
+  "dependencies": [
+    {
+      "name": "fmt",
+      "version>=": "12.1.0"
+    },
+    {
+      "name": "gtest",
+      "version>=": "1.17.0#2"
+    },
+    {
+      "name": "cli11"
+    }
+    
+  ]
 }
