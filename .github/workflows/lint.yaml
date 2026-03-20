@@ -80,4 +80,4 @@ jobs:
       - name: clang-tidy
         run: |
           FILES=$(git ls-files '*.cpp' '*.h' '*.hpp')
-          [ -z "$FILES" ] || run-clang-tidy -p build -extra-arg=-warnings-as-errors=* $FILES
+          [ -z "$FILES" ] || run-clang-tidy -p build -extra-arg=--warnings-as-errors=* $FILES
