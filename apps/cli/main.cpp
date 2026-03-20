@@ -4,6 +4,7 @@
 #include <CLI/CLI.hpp>
 
 void foo() {
+    // deliberately trigger clang tidy
     foo();
 }
 
