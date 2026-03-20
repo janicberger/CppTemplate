@@ -74,7 +74,7 @@ jobs:
 
       - name: cmake-format
         run: |
-          FILES=$(git ls-files 'CMakeLists.txt' '*.cmake')
+          FILES=$(git ls-files '*/CMakeLists.txt' '*.cmake')
           [ -z "$FILES" ] || cmake-format --check $FILES
 
       - name: clang-tidy

@@ -2,3 +2,4 @@ format:
   tab_size: 4
   line_width: 100
   dangle_parens: true
+  min_prefix_chars: 20
