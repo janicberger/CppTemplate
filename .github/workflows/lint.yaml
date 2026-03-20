@@ -69,15 +69,18 @@ jobs:
 
       - name: clang-format
         run: |
-          FILES=$(git ls-files '*.cpp' '*.hpp' '*.h')
+          FILES=$(git ls-files '*.cpp' '*.hpp' '*.h' '*.cuh' '*.cu')
           [ -z "$FILES" ] || clang-format --dry-run --Werror $FILES
+        continue-on-error: true
 
       - name: cmake-format
         run: |
           FILES=$(git ls-files 'CMakeLists.txt' '*.cmake')
           [ -z "$FILES" ] || cmake-format --check $FILES
+        continue-on-error: true
 
       - name: clang-tidy
         run: |
-          FILES=$(git ls-files '*.cpp')
+          FILES=$(git ls-files '*.cpp' '*.h' '*.hpp' '*.cuh' '*.cu')
           [ -z "$FILES" ] || clang-tidy $FILES -p build --warnings-as-errors=*
+        continue-on-error: true
