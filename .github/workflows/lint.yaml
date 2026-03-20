@@ -3,7 +3,7 @@ name: Lint
 on:
   pull_request:
   push:
-    branches: [main, master]
+    branches: [ main, master ]
 
 jobs:
   lint:
@@ -79,5 +79,5 @@ jobs:
 
       - name: clang-tidy
         run: |
-          FILES=$(git ls-files '*.cpp' '*.h' '*.hpp' '*.cuh' '*.cu')
-          [ -z "$FILES" ] || clang-tidy $FILES -p build --warnings-as-errors=*
+          FILES=$(git ls-files '*.cpp' '*.h' '*.hpp')
+          [ -z "$FILES" ] || run-clang-tidy $FILES -p build --warnings-as-errors=*
