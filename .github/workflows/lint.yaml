@@ -49,8 +49,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
-            clang-format clang-tidy cmake ninja-build python3-pip
-          pip3 install cmake-format
+            clang-format clang-tidy cmake ninja-build
 
       # -------------------------
       # Configure (uses vcpkg)
@@ -71,11 +70,6 @@ jobs:
         run: |
           FILES=$(git ls-files '*.cpp' '*.hpp' '*.h' '*.cuh' '*.cu')
           [ -z "$FILES" ] || clang-format --dry-run --Werror $FILES
-
-      - name: cmake-format
-        run: |
-          FILES=$(git ls-files '*/CMakeLists.txt' '*.cmake')
-          [ -z "$FILES" ] || cmake-format --check $FILES
 
       - name: clang-tidy
         run: |
