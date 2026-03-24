@@ -35,7 +35,7 @@ jobs:
 
       - name: Build
         run: |
-          cmake -Sdocumentation -Bbuild
+          cmake -Sdocs -Bbuild
           cmake --build build --target docs
 
       - name: Publish
