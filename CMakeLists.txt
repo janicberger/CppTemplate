@@ -17,8 +17,8 @@ add_subdirectory(apps)
 
 option(BUILD_TESTING "Enable testing" ON)
 enable_testing()
-if(${BUILD_TESTING})
+if (${BUILD_TESTING})
     add_subdirectory(tests)
-endif()
+endif ()
 
-include(Doxygen)
+add_subdirectory(docs)
