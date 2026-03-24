@@ -1,0 +1,45 @@
+name: Documentation
+
+on:
+  push:
+    tags:
+      - '*'
+
+env:
+  VCPKG_ROOT: ${{ github.workspace }}/vcpkg
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build and publish documentation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ${{ env.VCPKG_ROOT }}
+            ~/.cache/vcpkg
+            build/vcpkg_installed
+          key: vcpkg-${{ runner.os }}-${{ hashFiles('vcpkg.json') }}
+          restore-keys: |
+            vcpkg-${{ runner.os }}-
+
+      - name: Install Doxygen
+        uses: ssciwr/doxygen-install@v1
+        with:
+          version: "1.13.2"
+
+      - name: Build
+        run: |
+          cmake -Sdocumentation -Bbuild
+          cmake --build build --target docs
+
+      - name: Publish
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/doxygen/html
