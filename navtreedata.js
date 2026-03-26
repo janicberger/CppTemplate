@@ -24,8 +24,12 @@
 */
 var NAVTREE =
 [
-  [ "Project", "index.html", [
-    [ "VCPKG C++ Template", "index.html", "index" ],
+  [ "MyProject", "index.html", [
+    [ "VCPKG C++ Template", "index.html#autotoc_md0", [
+      [ "Features", "index.html#autotoc_md1", null ],
+      [ "Usage", "index.html#autotoc_md2", null ],
+      [ "TODOs", "index.html#autotoc_md3", null ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],

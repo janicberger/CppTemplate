@@ -13,7 +13,7 @@ var NAVTREEINDEX0 =
 "functions_func.html":[1,2,1],
 "greeter_8h_source.html":[2,0,0,0,0,0,0,0],
 "index.html":[],
-"index.html":[0],
+"index.html#autotoc_md0":[0],
 "index.html#autotoc_md1":[0,0],
 "index.html#autotoc_md2":[0,1],
 "index.html#autotoc_md3":[0,2],

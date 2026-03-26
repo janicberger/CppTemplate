@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['c_20template_0',['VCPKG C++ Template',['../index.html',1,'']]]
+  ['c_20template_0',['VCPKG C++ Template',['../index.html#autotoc_md0',1,'']]]
 ];
