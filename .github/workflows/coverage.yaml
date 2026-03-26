@@ -44,20 +44,18 @@ jobs:
           ctest --test-dir build/tests/ --build-config Debug
 
       - name: Install lcov
-        run: sudo apt install -y lcov
+        run: |
+          sudo apt install -y lcov
+          lcov --version
 
       - name: Capture coverage
         run: |
           lcov --capture \
-               --directory build/tests \
-               --output-file coverage.info
-
-      - name: Remove external
-        run: |
-          lcov --remove coverage.info \
-               '/usr/*' \
-               '*/vcpkg/*' \
-               '*/vcpkg_installed/*'
+               --directory build/tests/ \
+               --ignore-errors mismatch
+               --exclude '/usr/*' \
+               --exclude '*/vcpkg/*' \
+               --exclude '*/vcpkg_installed/*' \
                --output-file coverage.info
 
       - name: Upload coverage
