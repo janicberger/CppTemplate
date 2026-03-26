@@ -16,7 +16,6 @@ add_subdirectory(libs)
 add_subdirectory(apps)
 
 option(BUILD_TESTING "Enable testing" ON)
-enable_testing()
 if (${BUILD_TESTING})
     add_subdirectory(tests)
 endif ()

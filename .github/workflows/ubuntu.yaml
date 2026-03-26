@@ -1,0 +1,45 @@
+name: Ubuntu
+
+on:
+  push:
+  pull_request:
+    branches: [ main, master ]
+
+env:
+  CTEST_OUTPUT_ON_FAILURE: 1
+  VCPKG_ROOT: ${{ github.workspace }}/vcpkg
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ${{ env.VCPKG_ROOT }}
+            ~/.cache/vcpkg
+            build/vcpkg_installed
+          key: vcpkg-${{ runner.os }}-${{ hashFiles('vcpkg.json') }}
+          restore-keys: |
+            vcpkg-${{ runner.os }}-
+
+      - name: Bootstrap vcpkg
+        run: |
+          if [ ! -d "$VCPKG_ROOT" ]; then
+            git clone https://github.com/microsoft/vcpkg $VCPKG_ROOT
+          fi
+          $VCPKG_ROOT/bootstrap-vcpkg.sh
+
+      - name: Configure
+        run: cmake -S . -Bbuild --preset gcc-debug
+
+      - name: Build
+        run: cmake --build build --target build_tests
+
+      - name: test
+        run: |
+          cd build
+          ctest --build-config Debug
