@@ -1,0 +1,57 @@
+build:
+  stage: build
+  image: gcc:latest
+
+  variables:
+    CTEST_OUTPUT_ON_FAILURE: 1
+    VCPKG_ROOT: "$CO_PROJECT_DIR/vcpkg"
+
+  cache:
+    key: "vcpkg-linux-$CI_COMMIT_REF_SLUG"
+    paths:
+      - vcpkg/
+      - .cache/vcpkg/
+      - build/vcpkg_installed
+
+  before_script:
+    - apt-get update && apt-get install -y cmake ninja-build curl lcov git
+
+  script:
+    - |
+      if [ ! -d "$VCPKG_ROOT" ]; then
+        git clone https://github.com/microsoft/vcpkg $VCPKG_ROOT
+      fi
+      $VCPKG_ROOT/bootstrap-vcpkg.sh
+    - cmake -S . -B build --preset gcc-debug -DENABLE_TEST_COVERAGE=ON
+    - cmake --build build
+
+test:
+  stage: test
+  needs: [ build ]
+  script:
+    - ctest --test-dir build/tests/ --build-config Debug
+
+coverage:
+  stage: coverage
+  needs: [ test ]
+  script:
+    - |
+      lcov --capture \
+           --directory build/ \
+           --ignore-errors mismatch \
+           --exclude '/usr/*' \
+           --exclude '*/vcpkg*/*' \
+           --exclude '*/tests/*' \
+           --output-file coverage.info
+    - lcov --summary coverage.info
+
+  coverage: '/lines[.]+: \d+\.\d+%/'
+
+  artifacts:
+    paths:
+      - coverage.info
+    expire_in: 1 week
+
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == "main"
