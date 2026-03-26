@@ -17,7 +17,7 @@ build:
       - build/vcpkg_installed
 
   before_script:
-    - apt-get update && apt-get install -y cmake ctest ninja-build curl zip lcov git
+    - apt-get update && apt-get install -y cmake ninja-build curl zip lcov git
 
   script:
     - |
