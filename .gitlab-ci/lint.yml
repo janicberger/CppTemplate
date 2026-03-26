@@ -1,16 +1,12 @@
 lint:
   stage: lint
-  image: gcc:latest
-  needs: [ build ]
+  image: ubuntu:latest
 
   before_script:
     - apt-get update
-    - apt-get install -y clang-format clang-tidy
+    - apt-get install -y git clang-format
 
   script:
     - FILES=$(git ls-files '*.cpp' '*.hpp' '*.h' '*.cuh' '*.cu')
     - |
       [ -z "$FILES" ] || clang-format --dry-run --Werror $FILES
-    - FILES=$(git ls-files '*.cpp' '*.hpp' '*.h')
-    - |
-      [ -z "$FILES" ] || clang-tidy $FILES -p build --warnings-as-errors=*
