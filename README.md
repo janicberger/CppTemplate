@@ -2,9 +2,14 @@
 ![CMake](https://img.shields.io/badge/build-CMake-green)
 ![vcpkg](https://img.shields.io/badge/deps-vcpkg-ff69b4)
 
+[comment]: <>(Use in GitHub)
 [![Actions Status](https://github.com/janicberger/CppTemplate/workflows/Build/badge.svg)](https://github.com/janicberger/CppTemplate/actions)
 [![Actions Status](https://github.com/janicberger/CppTemplate/workflows/Lint/badge.svg)](https://github.com/janicberger/CppTemplate/actions)
 [![codecov](https://codecov.io/gh/janicberger/CppTemplate/branch/main/graph/badge.svg)](https://codecov.io/gh/janicberger/CppTemplate)
+
+[comment]: <>(Use in GitLab)
+[![pipeline](https://gitlab.fhnw.ch/janic.berger/CppTemplate/badges/main/pipeline.svg)](https://gitlab.fhnw.ch/janic.berger/CppTemplate/-/pipelines?ref=main)
+![coverage](https://gitlab.fhnw.ch/janic.berger/CppTemplate/badges/main/coverage.svg?job=coverage)
 
 # VCPKG C++ Template
 
@@ -20,7 +25,7 @@ A small template for C++ projects.
 
 ## Usage
 
-1. Set appropriate project name in top level `CMakeLists.txt`
+1. Set appropriate project name in top level `CMakeLists.txt` and `docs/CMakeLists.txt`
 2. Add dependencies to `vcpkg.json`.
 3. Add libraries to `libs`:
     ```
@@ -38,8 +43,8 @@ A small template for C++ projects.
 4. Add executables to `apps`.
 5. Add tests to `tests`.
 6. Build documentation with the `docs` CMake target.
+7. Customize CI/CD
 
-## TODOs
+## TODO
 
-- Add CI/CD
-- Add formatters
+- Dev Container
