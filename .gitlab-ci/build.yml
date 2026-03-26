@@ -44,6 +44,11 @@ test:
   script:
     - ctest --test-dir build/tests/ --build-config Debug
 
+  artifacts:
+    paths:
+      - build/
+    expire_in: 1 hour
+
 coverage:
   stage: coverage
   image: gcc:latest
