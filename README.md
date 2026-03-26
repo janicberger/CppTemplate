@@ -2,12 +2,12 @@
 ![CMake](https://img.shields.io/badge/build-CMake-green)
 ![vcpkg](https://img.shields.io/badge/deps-vcpkg-ff69b4)
 
-[comment]: <>(Use in GitHub)
+<!-- Use in GitHub -->
 [![Actions Status](https://github.com/janicberger/CppTemplate/workflows/Build/badge.svg)](https://github.com/janicberger/CppTemplate/actions)
 [![Actions Status](https://github.com/janicberger/CppTemplate/workflows/Lint/badge.svg)](https://github.com/janicberger/CppTemplate/actions)
 [![codecov](https://codecov.io/gh/janicberger/CppTemplate/branch/main/graph/badge.svg)](https://codecov.io/gh/janicberger/CppTemplate)
 
-[comment]: <>(Use in GitLab)
+<!-- Use in GitLab -->
 [![pipeline](https://gitlab.fhnw.ch/janic.berger/CppTemplate/badges/main/pipeline.svg)](https://gitlab.fhnw.ch/janic.berger/CppTemplate/-/pipelines?ref=main)
 ![coverage](https://gitlab.fhnw.ch/janic.berger/CppTemplate/badges/main/coverage.svg?job=coverage)
 
