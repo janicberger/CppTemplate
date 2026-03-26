@@ -10,4 +10,4 @@ endfunction()
 add_subdirectory(core)
 
 get_property(test_targets GLOBAL PROPERTY ALL_TEST_TARGETS)
-add_custom_target(build_tests DEPENDS test_targets)
+add_custom_target(build_tests DEPENDS ${test_targets})
