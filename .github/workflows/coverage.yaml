@@ -52,10 +52,11 @@ jobs:
       - name: Capture coverage
         run: |
           lcov --capture \
-               --directory build/tests/ \
+               --directory build/ \
                --ignore-errors mismatch \
                --exclude '/usr/*' \
                --exclude '*/vcpkg*/*' \
+               --exclude '*/tests/*' \
                --output-file coverage.info
 
       - name: Upload coverage
