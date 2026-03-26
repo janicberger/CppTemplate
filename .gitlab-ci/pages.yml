@@ -5,10 +5,10 @@ pages:
     - apt-get update && apt-get install -y cmake doxygen
 
   script:
-    - cmake -S docs -B build
-    - cmake --build build --target docs
+    - cmake -S docs -B build_docs
+    - cmake --build build_docs --target docs
     - mkdir -p public
-    - cp -r build/docs/html/* public/
+    - cp -r build_docs/docs/html/* public/
 
   artifacts:
     paths:
