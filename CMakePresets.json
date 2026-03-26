@@ -43,7 +43,6 @@
         }
       }
     },
-
     {
       "name": "windows-msvc-debug",
       "displayName": "MSVC Debug",
@@ -60,7 +59,6 @@
         "CMAKE_BUILD_TYPE": "Release"
       }
     },
-
     {
       "name": "mingw-base",
       "hidden": true,
@@ -97,7 +95,6 @@
         "CMAKE_BUILD_TYPE": "Release"
       }
     },
-
     {
       "name": "wsl-debug",
       "displayName": "WSL Debug",
@@ -129,7 +126,6 @@
         "CMAKE_BUILD_TYPE": "Release"
       }
     },
-
     {
       "name": "clang-debug",
       "displayName": "Clang Debug",
@@ -154,7 +150,6 @@
         "CMAKE_BUILD_TYPE": "Release"
       }
     },
-
     {
       "name": "gcc-debug",
       "displayName": "GCC Debug",
@@ -179,10 +174,9 @@
         "CMAKE_BUILD_TYPE": "Release"
       }
     },
-
     {
-      "name": "osx-debug",
-      "displayName": "OSX Debug",
+      "name": "macos-debug",
+      "displayName": "macOS Debug",
       "inherits": "vcpkg-base",
       "condition": {
         "type": "equals",
@@ -191,14 +185,13 @@
       },
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
-        "VCPKG_TARGET_TRIPLET": "x64-osx",
-        "CMAKE_C_COMPILER": "gcc",
-        "CMAKE_CXX_COMPILER": "g++"
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++"
       }
     },
     {
-      "name": "osx-release",
-      "displayName": "OSX Release",
+      "name": "macos-release",
+      "displayName": "macOS Release",
       "inherits": "vcpkg-base",
       "condition": {
         "type": "equals",
@@ -207,9 +200,8 @@
       },
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
-        "VCPKG_TARGET_TRIPLET": "x64-osx",
-        "CMAKE_C_COMPILER": "gcc",
-        "CMAKE_CXX_COMPILER": "g++"
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++"
       }
     }
   ]

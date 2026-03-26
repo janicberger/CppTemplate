@@ -25,6 +25,8 @@ jobs:
             preset: windows-msvc-release
           - os: windows-latest
             preset: windows-mingw-release
+          - os: macos-latest
+            preset: macos-release
 
     steps:
       - uses: actions/checkout@v4
