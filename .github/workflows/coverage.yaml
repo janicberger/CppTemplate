@@ -1,5 +1,4 @@
-name: Test
-
+name: Coverage
 on:
   pull_request:
   push:
@@ -10,23 +9,8 @@ env:
   VCPKG_ROOT: ${{ github.workspace }}/vcpkg
 
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - os: ubuntu-latest
-            preset: gcc-release
-          - os: ubuntu-latest
-            preset: clang-release
-          - os: windows-latest
-            preset: windows-msvc-release
-          - os: windows-latest
-            preset: windows-mingw-release
-          - os: macos-latest
-            preset: macos-release
+  coverage:
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -50,12 +34,27 @@ jobs:
         shell: bash
 
       - name: Configure
-        run: cmake -S . -Bbuild --preset ${{ matrix.preset }}
+        run: cmake -S . -Bbuild --preset gcc-debug -DENABLE_TEST_COVERAGE=ON
 
       - name: Build
         run: cmake --build build --target build_tests
 
       - name: test
         run: |
-          cd build/tests
-          ctest --build-config Debug
+          ctest --test-dir build/test --build-config Debug
+
+      - name: Capture coverage
+        run: |
+          lcov --capture \
+               --directory build/test \
+               --output-file coverage.info
+          lcov --remove coverage.info \
+               '/usr/*' \
+               '*/vcpkg/*' \
+               '*/vcpkg_installed/*'
+               --output-file coverage.info
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v4
+        with:
+          files: coverage.info

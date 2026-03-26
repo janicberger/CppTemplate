@@ -8,6 +8,12 @@ project(MyProject
 set(CMAKE_CXX_STANDARD 23)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+option(ENABLE_TEST_COVERAGE "Enable test coverage" OFF)
+if (ENABLE_TEST_COVERAGE)
+    message(STATUS "Coverage enabled")
+    add_compile_options(--coverage -O0 -g)
+    add_link_options(--coverage)
+endif ()
 
 include(ProjectOptions)
 
