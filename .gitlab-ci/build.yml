@@ -7,14 +7,17 @@ build:
     VCPKG_ROOT: "$CO_PROJECT_DIR/vcpkg"
 
   cache:
-    key: "vcpkg-linux-$CI_COMMIT_REF_SLUG"
+    key:
+      files:
+        - vcpkg.json
+      prefix: "vcpkg-linux"
     paths:
       - vcpkg/
       - .cache/vcpkg/
       - build/vcpkg_installed
 
   before_script:
-    - apt-get update && apt-get install -y cmake ninja-build curl zip lcov git
+    - apt-get update && apt-get install -y cmake ctest ninja-build curl zip lcov git
 
   script:
     - |
@@ -25,15 +28,29 @@ build:
     - cmake -S . -B build --preset gcc-debug -DENABLE_TEST_COVERAGE=ON
     - cmake --build build
 
+  artifacts:
+    paths:
+      - build/
+    expires_in: 1 hour
+
 test:
   stage: test
+  image: gcc:latest
   needs: [ build ]
+
+  before_script:
+    - apt-get update && apt-get install -y cmake
+
   script:
     - ctest --test-dir build/tests/ --build-config Debug
 
 coverage:
   stage: coverage
   needs: [ test ]
+
+  before_script:
+    - apt-get update && apt-get install -y cmake lcov
+
   script:
     - |
       lcov --capture \

@@ -1,8 +1,10 @@
 pages:
   stage: deploy
+  image: gcc:latest
   needs: [ build ]
 
   before_script:
+    - apt-get update && apt-get install -y cmake doxygen
     - cmake --build build --target docs
 
   script:
