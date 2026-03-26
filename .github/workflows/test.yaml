@@ -22,9 +22,9 @@ jobs:
           - os: ubuntu-latest
             preset: clang-release
           - os: windows-latest
-            preset: msvc-release
+            preset: windows-msvc-release
           - os: windows-latest
-            preset: mingw-release
+            preset: windows-mingw-release
 
     steps:
       - uses: actions/checkout@v4
