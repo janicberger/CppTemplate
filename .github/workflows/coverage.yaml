@@ -58,6 +58,4 @@ jobs:
                --output-file coverage.info
 
       - name: Upload coverage
-        uses: codecov/codecov-action@v4
-        with:
-          files: coverage.info
+        run: bash <(curl -s https://codecov.io/bash) -f coverage.info || echo "Codecov did not collect coverage reports."
