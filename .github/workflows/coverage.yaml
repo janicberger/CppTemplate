@@ -6,6 +6,7 @@ on:
 
 env:
   CTEST_OUTPUT_ON_FAILURE: 1
+  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
   VCPKG_ROOT: ${{ github.workspace }}/vcpkg
 
 jobs:
