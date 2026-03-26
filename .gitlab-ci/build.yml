@@ -31,7 +31,7 @@ build:
   artifacts:
     paths:
       - build/
-    expires_in: 1 hour
+    expire_in: 1 hour
 
 test:
   stage: test
