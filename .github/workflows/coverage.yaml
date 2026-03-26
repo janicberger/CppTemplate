@@ -52,7 +52,7 @@ jobs:
         run: |
           lcov --capture \
                --directory build/tests/ \
-               --ignore-errors mismatch
+               --ignore-errors mismatch \
                --exclude '/usr/*' \
                --exclude '*/vcpkg/*' \
                --exclude '*/vcpkg_installed/*' \
