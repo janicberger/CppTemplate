@@ -1,3 +1,11 @@
+![C++](https://img.shields.io/badge/language-C%2B%2B-blue)
+![CMake](https://img.shields.io/badge/build-CMake-green)
+![vcpkg](https://img.shields.io/badge/deps-vcpkg-ff69b4)
+
+[![Actions Status](https://github.com/janicberger/CppTemplate/workflows/Test/badge.svg)](https://github.com/janicberger/CppTemplate/actions)
+[![Actions Status](https://github.com/janicberger/CppTemplate/workflows/Lint/badge.svg)](https://github.com/janicberger/CppTemplate/actions)
+[![codecov](https://codecov.io/gh/janicberger/CppTemplate/branch/main/graph/badge.svg)](https://codecov.io/gh/janicberger/CppTemplate)
+
 # VCPKG C++ Template
 
 A small template for C++ projects.
