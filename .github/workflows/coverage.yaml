@@ -45,7 +45,7 @@ jobs:
 
       - name: Capture coverage
         run: |
-          apt install lcov -y
+          sudo apt install lcov -y
           lcov --capture \
                --directory build/tests \
                --output-file coverage.info
