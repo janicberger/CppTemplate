@@ -1,4 +1,4 @@
-name: Ubuntu
+name: Test
 
 on:
   push:
@@ -11,7 +11,20 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            preset: gcc-release
+          - os: ubuntu-latest
+            preset: clang-release
+          - os: windows-latest
+            preset: msvc-release
+          - os: windows-latest
+            preset: mingw-release
 
     steps:
       - uses: actions/checkout@v4
@@ -32,9 +45,10 @@ jobs:
             git clone https://github.com/microsoft/vcpkg $VCPKG_ROOT
           fi
           $VCPKG_ROOT/bootstrap-vcpkg.sh
+        shell: bash
 
       - name: Configure
-        run: cmake -S . -Bbuild --preset gcc-debug
+        run: cmake -S . -Bbuild --preset ${{ matrix.preset }}
 
       - name: Build
         run: cmake --build build --target build_tests
