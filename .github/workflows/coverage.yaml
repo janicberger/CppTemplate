@@ -54,8 +54,7 @@ jobs:
                --directory build/tests/ \
                --ignore-errors mismatch \
                --exclude '/usr/*' \
-               --exclude '*/vcpkg/*' \
-               --exclude '*/vcpkg_installed/*' \
+               --exclude '*/vcpkg*/*' \
                --output-file coverage.info
 
       - name: Upload coverage
