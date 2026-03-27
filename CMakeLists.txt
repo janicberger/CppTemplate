@@ -24,6 +24,7 @@ add_subdirectory(apps)
 
 option(BUILD_TESTING "Enable testing" ON)
 if (${BUILD_TESTING})
+    enable_testing()
     add_subdirectory(tests)
 endif ()
 
