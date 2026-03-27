@@ -44,7 +44,3 @@ A small template for C++ projects.
 5. Add tests to `tests`.
 6. Build documentation with the `docs` CMake target.
 7. Customize CI/CD
-
-## TODO
-
-- Dev Container
